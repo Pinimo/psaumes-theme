@@ -1,0 +1,24 @@
+{{ partial "head" . }}
+<div id="main-content" class="container">
+  <header>
+    {{ partial "bloc/content/h1-title" . }}
+  </header>
+  <ul class="container content">
+<h4>Psaumes passés</h4>
+<ul class="upcoming-events">
+{{ range where .Data.Pages.ByDate "type" "psaumes" }}
+  {{ if ge .Date.Unix .Now.Unix }}
+    <li>
+      <span class="event-date">
+      {{ .Date.Format "2 January 2006" }}</span> : {{ .Title }}
+      
+    </li>
+  {{ end }}
+{{ end }}
+  </ul>
+  {{ partial "bloc/content/pagination.html" . }}
+</div>
+
+
+
+{{ partial "foot" . }}
